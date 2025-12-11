@@ -4,7 +4,7 @@ import mongoose from "mongoose"
 import authRouter from "./Routes/AuthRoutes"
 import feedbackRouter from "./Routes/FeedBackRoutes"
 import orderRouter from "./Routes/OrderRoutes"
-
+import deliveryRouter from "./Routes/DeliveryRoutes"
 
 
 dotenv.config()
@@ -20,6 +20,7 @@ app.use(express.json())
 app.use("/api/v1/auth" , authRouter)
 app.use("/api/v1/feedback" , feedbackRouter )
 app.use("/api/v1/order" , orderRouter )
+app.use("/api/v1/delivery" , deliveryRouter )
 
 mongoose
   .connect(MONGO_URI)
