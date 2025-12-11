@@ -3,6 +3,10 @@ import dotenv from "dotenv"
 import mongoose from "mongoose"
 import authRouter from "./Routes/AuthRoutes"
 import feedbackRouter from "./Routes/FeedBackRoutes"
+import orderRouter from "./Routes/OrderRoutes"
+
+
+
 dotenv.config()
 const SERVER_PORT = process.env.SERVER_PORT
 const MONGO_URI = process.env.MONGO_URI as string
@@ -15,6 +19,7 @@ const app = express()
 app.use(express.json())
 app.use("/api/v1/auth" , authRouter)
 app.use("/api/v1/feedback" , feedbackRouter )
+app.use("/api/v1/order" , orderRouter )
 
 mongoose
   .connect(MONGO_URI)
