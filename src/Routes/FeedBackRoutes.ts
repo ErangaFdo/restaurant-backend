@@ -6,6 +6,6 @@ import { creaetFeedback, getAllFeedback } from "../Controller/FeedBackController
 
 const router = Router()
 router.post("/create",  authenticate , requireRole([Role.USER]) , creaetFeedback)
-router.post("/getall",    getAllFeedback )
+router.get("/getall",    getAllFeedback )
 
 export default router
