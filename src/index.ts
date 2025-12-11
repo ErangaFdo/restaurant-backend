@@ -5,6 +5,7 @@ import authRouter from "./Routes/AuthRoutes"
 import feedbackRouter from "./Routes/FeedBackRoutes"
 import orderRouter from "./Routes/OrderRoutes"
 import deliveryRouter from "./Routes/DeliveryRoutes"
+import paymentRouter from "./Routes/PaymentRoutes"
 
 
 dotenv.config()
@@ -21,6 +22,7 @@ app.use("/api/v1/auth" , authRouter)
 app.use("/api/v1/feedback" , feedbackRouter )
 app.use("/api/v1/order" , orderRouter )
 app.use("/api/v1/delivery" , deliveryRouter )
+app.use("/api/v1/payment" , paymentRouter )
 
 mongoose
   .connect(MONGO_URI)
