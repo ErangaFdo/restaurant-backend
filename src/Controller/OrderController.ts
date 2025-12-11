@@ -60,3 +60,28 @@ export const createOrder = async (req: Request, res: Response) => {
     }
   });
 };
+
+export const getAllOrder = async(req: Request , res:Response)=>{
+    try {
+        const page = parseInt(req.query.page as string) || 1;
+        const limit = parseInt(req.query.limit as string) || 10;
+        const skip = (page - 1) * limit;
+
+        const user = await Order.find()
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limit);
+
+        const total = await Order.countDocuments();
+        return res.status(200).json({
+            message: 'Order Details get Successful',
+            data: user,
+            totalPages: Math.ceil(total / limit),
+            totalCount: total,
+            page,
+        });
+
+    } catch (error: any) {
+        res.status(500).json({ message: "Server Error", error: error.message });
+    }
+}
