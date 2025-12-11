@@ -2,6 +2,7 @@ import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
 import authRouter from "./Routes/AuthRoutes"
+import feedbackRouter from "./Routes/FeedBackRoutes"
 dotenv.config()
 const SERVER_PORT = process.env.SERVER_PORT
 const MONGO_URI = process.env.MONGO_URI as string
@@ -13,6 +14,7 @@ const app = express()
 
 app.use(express.json())
 app.use("/api/v1/auth" , authRouter)
+app.use("/api/v1/feedback" , feedbackRouter )
 
 mongoose
   .connect(MONGO_URI)
