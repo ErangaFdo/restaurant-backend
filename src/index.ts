@@ -6,6 +6,7 @@ import feedbackRouter from "./Routes/FeedBackRoutes"
 import orderRouter from "./Routes/OrderRoutes"
 import deliveryRouter from "./Routes/DeliveryRoutes"
 import paymentRouter from "./Routes/PaymentRoutes"
+import menuRouter from "./Routes/MenuRoutes"
 
 
 dotenv.config()
@@ -23,6 +24,7 @@ app.use("/api/v1/feedback" , feedbackRouter )
 app.use("/api/v1/order" , orderRouter )
 app.use("/api/v1/delivery" , deliveryRouter )
 app.use("/api/v1/payment" , paymentRouter )
+app.use("/api/v1/menu" , menuRouter )
 
 mongoose
   .connect(MONGO_URI)
