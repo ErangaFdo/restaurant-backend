@@ -1,6 +1,7 @@
 import express from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose"
+import cors from "cors"
 import authRouter from "./Routes/AuthRoutes"
 import feedbackRouter from "./Routes/FeedBackRoutes"
 import orderRouter from "./Routes/OrderRoutes"
@@ -19,6 +20,12 @@ const app = express()
 
 
 app.use(express.json())
+app.use(
+  cors({
+    origin: ["http://localhost:5173"],
+    methods: ["GET", "POST", "PUT", "DELETE"]
+  })
+)
 app.use("/api/v1/auth" , authRouter)
 app.use("/api/v1/feedback" , feedbackRouter )
 app.use("/api/v1/order" , orderRouter )
