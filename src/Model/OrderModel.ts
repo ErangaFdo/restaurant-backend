@@ -10,11 +10,12 @@ export interface IOrder extends Document{
     amount : string
     orderType :string
     orderDate : string
-    Foodname : string
+    foodname : string
     price : string
     qty : number,
     creatAt? : Date
     updatedAt? : Date
+    status?: string;
 }
 
 const OrderSchema = new Schema<IOrder>({
@@ -26,9 +27,14 @@ const OrderSchema = new Schema<IOrder>({
     amount : {type:String , required:true},
     orderType :{type:String , required:true},
     orderDate : {type:String , required:true},
-    Foodname : {type:String , required:true},
+    foodname : {type:String , required:true},
     price : {type:String , required:true},
     qty : {type:Number , required:true},
+    status: {
+        type: String,
+        enum: ["pending", "success", "cancelled"],
+        default: "pending",
+    },
   },{
     timestamps:true
 })
